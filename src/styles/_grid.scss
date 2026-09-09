@@ -38,8 +38,12 @@
 }
 
 // Every column is full width until its breakpoint claims it.
+// min-width: 0 overrides the grid item default of `auto`, which would let wide
+// content (the comparison matrix, a code block) push its own track past the
+// viewport instead of scrolling inside its own overflow container.
 [class*='col-'] {
   grid-column: 1 / -1;
+  min-width: 0;
 }
 
 // Span helpers. Small screens are single-column by default; `md` and `lg`

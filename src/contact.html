@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Teloris</title>
+    <meta
+      name="description"
+      content="Talk directly to the team responsible for your region. One conversation about your business, where Teloris can create value, and the best place to start."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Teloris" />
+    <meta property="og:title" content="Contact — Teloris" />
+    <meta property="og:url" content="https://teloris.ai/contact" />
+    <link rel="preload" href="/fonts/IBMPlexSansVar-Roman.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <!--#include header -->
+
+    <main class="page zone--dark" id="main">
+      <section class="page-hero">
+        <div class="grid">
+          <div class="col-lg-16">
+            <p class="page-hero__kicker">Contact</p>
+          </div>
+          <h1 class="page-hero__title col-lg-8">Let’s talk business.</h1>
+          <div class="col-lg-7 start-lg-10" style="margin-top: 1.5rem">
+            <p class="page-hero__sub">
+              Whether you want to start with Sales, explore Teloris for your
+              company, or discuss a partnership — talk directly to the team
+              responsible for your region.
+            </p>
+            <p class="page-hero__sub">
+              No complicated process. Just a conversation about your business,
+              where Teloris can create value, and the best place to start.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section zone--light">
+        <div class="grid">
+          <div class="col-lg-9">
+            <!--
+              Field names, types and length limits match the existing form
+              exactly, so the current handler receives an identical payload.
+              The live site submits through a framework server function rather
+              than a stable path, so `action` is left for that wiring.
+            -->
+            <form class="form" method="post" novalidate>
+              <div class="form__grid">
+                <div class="field">
+                  <label class="field__label" for="c-name">
+                    Name <span class="field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input class="field__control" id="c-name" name="name" type="text"
+                         required maxlength="100" autocomplete="name" />
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="c-email">
+                    Work email <span class="field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input class="field__control" id="c-email" name="email" type="email"
+                         required maxlength="255" autocomplete="email" />
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="c-company">
+                    Company <span class="field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input class="field__control" id="c-company" name="company" type="text"
+                         required maxlength="120" autocomplete="organization" />
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="c-phone">Phone number</label>
+                  <input class="field__control" id="c-phone" name="phone" type="tel"
+                         maxlength="40" autocomplete="tel" />
+                </div>
+
+                <div class="field form__span-2">
+                  <label class="field__label" for="c-icp">
+                    Who do you sell to? <span class="field__required" aria-hidden="true">*</span>
+                  </label>
+                  <input class="field__control" id="c-icp" name="icp" type="text"
+                         required maxlength="300"
+                         placeholder="Industry, size, countries — the customers you want more of." />
+                </div>
+
+                <div class="field form__span-2">
+                  <label class="field__label" for="c-challenge">Anything else we should know?</label>
+                  <textarea class="field__control" id="c-challenge" name="challenge" rows="4"
+                            maxlength="2000"
+                            placeholder="What you are trying to solve, or anything that would make the call more useful."></textarea>
+                </div>
+              </div>
+
+              <div class="form__foot">
+                <button class="btn btn--primary" type="submit">
+                  Send it — book my call
+                  <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M8.7 2.6 7.6 3.7l3.5 3.6H1.5v1.4h9.6l-3.5 3.6 1.1 1.1L14.2 8z" />
+                  </svg>
+                </button>
+                <p class="form__note">One conversation. With the office that covers your region.</p>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-6 start-lg-11">
+            <div class="contacts">
+              <article class="contact-card">
+                <p class="contact-card__region">North America</p>
+                <h2 class="contact-card__name">Ken Morse</h2>
+                <p class="contact-card__role">
+                  Board of Advisors · GM &amp; Sales Director, Teloris North
+                  American Operations
+                </p>
+                <p class="contact-card__where">Key Largo, Florida, United States</p>
+                <p class="contact-card__links">
+                  <a class="link" href="mailto:us@teloris.ai">us@teloris.ai</a>
+                  <a class="link" href="https://www.linkedin.com/in/kenmorse">LinkedIn</a>
+                </p>
+              </article>
+
+              <article class="contact-card">
+                <p class="contact-card__region">Europe</p>
+                <h2 class="contact-card__name">Călin Ștefănescu</h2>
+                <p class="contact-card__role">Co-Founder · Teloris Europe Operations</p>
+                <p class="contact-card__where">Nazna, Mureș, Romania</p>
+                <p class="contact-card__links">
+                  <a class="link" href="mailto:europe@teloris.ai">europe@teloris.ai</a>
+                  <a class="link" href="https://www.linkedin.com/in/calinstefanescu/">LinkedIn</a>
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--#include footer -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

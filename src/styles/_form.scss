@@ -1,0 +1,133 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Carbon text input: a filled field on the layer colour with a single bottom
+// rule, 48px tall, square. The rule thickens to the accent on focus.
+// ---------------------------------------------------------------------------
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field__label {
+  @include t.eyebrow;
+  color: var(--t-fg-muted);
+}
+
+.field__required {
+  color: var(--t-accent);
+}
+
+.field__control {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.6875rem 1rem;
+  background-color: var(--t-surface);
+  border: 0;
+  border-bottom: 1px solid var(--t-border-strong);
+  color: var(--t-fg);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: background-color $dur-fast $ease-productive,
+    border-color $dur-fast $ease-productive;
+
+  &::placeholder {
+    color: var(--t-fg-faint);
+  }
+
+  &:focus {
+    outline: 2px solid var(--t-accent);
+    outline-offset: -2px;
+    border-bottom-color: transparent;
+  }
+}
+
+textarea.field__control {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include bp.breakpoint(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form__span-2 {
+  @include bp.breakpoint(md) {
+    grid-column: 1 / -1;
+  }
+}
+
+.form__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--t-border);
+}
+
+.form__note {
+  @include t.mono-data;
+  color: var(--t-fg-faint);
+  max-width: 34ch;
+}
+
+// ---------------------------------------------------------------------------
+// Regional contact cards.
+// ---------------------------------------------------------------------------
+.contacts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: var(--t-border);
+  border: 1px solid var(--t-border);
+}
+
+.contact-card {
+  background-color: var(--t-bg);
+  padding: 1.75rem 1.5rem;
+}
+
+.contact-card__region {
+  @include t.eyebrow;
+  color: var(--t-accent);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--t-border);
+}
+
+.contact-card__name {
+  @include t.heading-04;
+  margin-top: 1.25rem;
+  color: var(--t-fg);
+}
+
+.contact-card__role {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--t-fg-muted);
+}
+
+.contact-card__where {
+  margin-top: 0.75rem;
+  @include t.mono-data;
+  color: var(--t-fg-faint);
+}
+
+.contact-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}

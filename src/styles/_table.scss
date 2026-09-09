@@ -1,0 +1,108 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Comparison matrix, on Carbon's data-table proportions. The argument of this
+// table is that one row is continuous, so coverage is encoded in form as well
+// as in the word — a filled cell, a half cell, an empty one — and the Teloris
+// row is the only one that reads as a solid band.
+// ---------------------------------------------------------------------------
+.matrix__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--t-border);
+}
+
+.matrix {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  background-color: var(--t-bg);
+}
+
+.matrix th,
+.matrix td {
+  text-align: left;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--t-border);
+  vertical-align: middle;
+}
+
+.matrix thead th {
+  background-color: var(--t-surface);
+  @include t.eyebrow;
+  color: var(--t-fg);
+  white-space: nowrap;
+}
+
+.matrix tbody th {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--t-fg-muted);
+  white-space: nowrap;
+}
+
+.matrix tbody tr:last-child th,
+.matrix tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+// The Teloris row: continuous, and marked as such.
+.matrix tr[data-self='true'] {
+  background-color: var(--t-surface);
+
+  th {
+    color: var(--t-fg);
+    font-weight: 500;
+    box-shadow: inset 3px 0 0 var(--t-accent);
+  }
+}
+
+// Coverage marks. Square, sized on the spacing scale, never an icon font.
+.cover {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 1px solid var(--t-border-strong);
+}
+
+.cover--yes {
+  background-color: var(--t-accent);
+  border-color: var(--t-accent);
+}
+
+// Half-filled, drawn with a hard-stop gradient rather than a second element.
+.cover--partial {
+  background: linear-gradient(
+    90deg,
+    var(--t-accent) 0 50%,
+    transparent 50% 100%
+  );
+  border-color: var(--t-accent);
+}
+
+.cover--no {
+  background-color: transparent;
+}
+
+.matrix__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  @include t.mono-data;
+  color: var(--t-fg-faint);
+}
+
+.matrix__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.matrix__source {
+  margin-top: 1rem;
+  @include t.mono-data;
+  color: var(--t-fg-faint);
+  max-width: 70ch;
+}

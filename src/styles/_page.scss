@@ -1,0 +1,211 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Inner-page hero. Shorter than the homepage opener and asymmetrical in the
+// same way: title left, supporting prose in a narrower offset column.
+// ---------------------------------------------------------------------------
+.page-hero {
+  padding-block: 4rem 3rem;
+
+  @include bp.breakpoint(lg) {
+    padding-block: 6rem 4rem;
+  }
+}
+
+.page-hero__kicker {
+  @include t.eyebrow;
+  color: var(--t-accent);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--t-border);
+}
+
+.page-hero__title {
+  @include t.display-02;
+  text-wrap: balance;
+
+  em {
+    font-style: normal;
+    color: var(--t-fg-faint);
+  }
+}
+
+.page-hero__sub {
+  @include t.body-lg;
+  color: var(--t-fg-muted);
+
+  & + & {
+    margin-top: 1.25rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Numbered step. The index is real information here — these are ordered
+// stages, so the numeral is set large and carries the section.
+// ---------------------------------------------------------------------------
+.step {
+  padding-block: 3rem;
+  border-top: 1px solid var(--t-border);
+
+  @include bp.breakpoint(lg) {
+    padding-block: 4rem;
+  }
+}
+
+.step__index {
+  @include t.display-03;
+  color: var(--t-accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.step__title {
+  @include t.display-03;
+  margin-top: 1rem;
+  text-wrap: balance;
+
+  @include bp.breakpoint(lg) {
+    margin-top: 0;
+  }
+}
+
+.step__lede {
+  @include t.body-lg;
+  margin-top: 1.25rem;
+  color: var(--t-fg-muted);
+}
+
+.step__note {
+  margin-top: 1.5rem;
+  @include t.body-lg;
+  color: var(--t-fg);
+  max-width: 52ch;
+}
+
+// ---------------------------------------------------------------------------
+// Prompt list — the example questions put to Teloris. Set in mono on a raised
+// layer so they read as things typed, not as marketing copy.
+// ---------------------------------------------------------------------------
+.prompts {
+  border: 1px solid var(--t-border);
+  background-color: var(--t-surface);
+}
+
+.prompts__label {
+  @include t.eyebrow;
+  color: var(--t-fg-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--t-border);
+}
+
+.prompts__list li {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  @include t.mono-data;
+  color: var(--t-fg);
+
+  & + li {
+    border-top: 1px solid var(--t-border);
+  }
+
+  &::before {
+    content: '›';
+    flex: 0 0 auto;
+    color: var(--t-accent);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Definition rows — label/value pairs used for opportunity context and the
+// measurement baselines.
+// ---------------------------------------------------------------------------
+.defs {
+  border-top: 1px solid var(--t-border);
+}
+
+.defs__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.375rem 2rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--t-border);
+
+  @include bp.breakpoint(md) {
+    grid-template-columns: 12rem 1fr;
+    align-items: baseline;
+  }
+}
+
+.defs__key {
+  @include t.eyebrow;
+  color: var(--t-accent);
+}
+
+.defs__val {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--t-fg-muted);
+}
+
+// Numbered cost/objection blocks.
+.claim {
+  padding-block: 2rem;
+  border-top: 1px solid var(--t-border);
+}
+
+.claim__index {
+  @include t.mono-data;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--t-fg-faint);
+}
+
+.claim__title {
+  @include t.heading-04;
+  margin-top: 0.75rem;
+  color: var(--t-fg);
+}
+
+.claim__body {
+  margin-top: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--t-fg-muted);
+  max-width: 62ch;
+}
+
+// A single strong line that closes a section.
+.coda {
+  @include t.display-03;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--t-border);
+  color: var(--t-fg);
+  text-wrap: balance;
+
+  em {
+    font-style: normal;
+    color: var(--t-accent);
+  }
+}
+
+// Chips for the connectable systems.
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  background-color: var(--t-border);
+  border: 1px solid var(--t-border);
+}
+
+.chip {
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 0.875rem 1rem;
+  background-color: var(--t-bg);
+  @include t.eyebrow;
+  color: var(--t-fg-muted);
+}
