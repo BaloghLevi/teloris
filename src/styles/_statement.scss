@@ -1,0 +1,32 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Statement band — four short lines where three are negations and the fourth
+// is the claim. Set as one block with the negations in gray, so the last line
+// lands on its own without needing a size change.
+// ---------------------------------------------------------------------------
+.statement__body {
+  @include t.display-02;
+  text-wrap: balance;
+}
+
+.statement__line {
+  display: block;
+  color: var(--t-fg-faint);
+  transition: color $dur-base $ease-productive;
+}
+
+.statement__line--claim {
+  color: var(--t-fg);
+}
+
+// A blue rule marks the claim line rather than colouring the type, keeping
+// action blue reserved for things you can act on.
+.statement__mark {
+  width: 4rem;
+  height: 2px;
+  margin-bottom: 2rem;
+  background-color: var(--t-accent);
+}

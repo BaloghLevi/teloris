@@ -1,0 +1,47 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Closing section — the highest-contrast moment on the page. Pure white type
+// on pure black, at the top of the display scale, with a single action.
+// ---------------------------------------------------------------------------
+.closing {
+  padding-block: 5rem;
+
+  @include bp.breakpoint(lg) {
+    padding-block: 9rem;
+  }
+}
+
+.closing__title {
+  @include t.display-01;
+  color: $white;
+  text-wrap: balance;
+
+  span {
+    display: block;
+  }
+}
+
+.closing__sub {
+  margin-top: 2rem;
+  @include t.display-03;
+  color: $gray-50;
+  max-width: 24ch;
+}
+
+.closing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin-top: 3rem;
+}
+
+.closing__meta {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $gray-80;
+  @include t.mono-data;
+  color: $gray-50;
+}

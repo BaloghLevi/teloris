@@ -79,61 +79,87 @@
   color: $gray-30;
 }
 
+// Stacked as a Carbon button set: equal width, hairline between, so the
+// primary and tertiary read as one control block inside the narrow aside.
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1px;
   margin-top: 2rem;
+
+  .btn {
+    width: 100%;
+    max-width: 22rem;
+  }
 }
 
-// Signal rail — three claims stated as data, closing the hero on a hairline.
+// ---------------------------------------------------------------------------
+// Verb rail — the eight things Teloris does, stated as a ruled matrix rather
+// than a row of icon cards. Closes the hero on structure, not decoration.
+// ---------------------------------------------------------------------------
 .hero__rail {
   margin-top: 4rem;
-  border-top: 1px solid $gray-80;
 
   @include bp.breakpoint(lg) {
     margin-top: 6rem;
   }
 }
 
-.hero__stat {
-  padding-block: 2rem;
-  border-bottom: 1px solid $gray-80;
+.hero__matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: $gray-80;
+  border-block: 1px solid $gray-80;
 
   @include bp.breakpoint(md) {
-    border-bottom: 0;
-    padding-right: 2rem;
-  }
-
-  @include bp.breakpoint(lg) {
-    // Hairlines between the stats, not around them.
-    border-left: 1px solid $gray-80;
-    padding-left: 1.5rem;
-    padding-right: 3rem;
-
-    &:first-child {
-      border-left: 0;
-      padding-left: 0;
-    }
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.hero__stat-value {
-  @include t.display-03;
-  color: $white;
-  font-variant-numeric: tabular-nums;
+.verb {
+  background-color: $black;
+  padding: 1.25rem 1rem 1.5rem;
+  transition: background-color $dur-fast $ease-productive;
+
+  &:hover {
+    background-color: $gray-100;
+  }
 }
 
-.hero__stat-label {
-  @include t.eyebrow;
-  color: $blue-50;
-  margin-bottom: 0.75rem;
-}
-
-.hero__stat-note {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.42857;
+.verb__index {
+  @include t.mono-data;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
   color: $gray-50;
-  max-width: 30ch;
+}
+
+.verb__name {
+  margin-top: 0.875rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: $white;
+}
+
+.verb__desc {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  line-height: 1.46;
+  color: $gray-50;
+}
+
+// Rail intro — a full sentence, so it is set as prose rather than forced into
+// the uppercase mono eyebrow treatment.
+.hero__rail-intro {
+  @include t.body-lg;
+  margin-bottom: 1.5rem;
+  color: $gray-50;
+  max-width: 62ch;
+
+  strong {
+    font-weight: 400;
+    color: $white;
+  }
 }

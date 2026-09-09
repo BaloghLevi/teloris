@@ -7,48 +7,6 @@
 // The 1px gaps over a border-coloured backing draw the rules, so the grid
 // stays a single object rather than a field of separate boxes.
 // ---------------------------------------------------------------------------
-.caps__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1px;
-  margin-bottom: 2px;
-  background-color: var(--t-border);
-  border: 1px solid var(--t-border);
-}
-
-.caps__filter {
-  flex: 1 1 auto;
-  padding: 0.75rem 1rem;
-  min-height: 3rem;
-  background-color: var(--t-bg);
-  border: 0;
-  font-family: t.$font-mono;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--t-fg-muted);
-  cursor: pointer;
-  transition: background-color $dur-fast $ease-productive,
-    color $dur-fast $ease-productive;
-
-  &:hover {
-    background-color: var(--t-surface-2);
-    color: var(--t-fg);
-  }
-
-  &[aria-pressed='true'] {
-    background-color: var(--t-fg);
-    color: var(--t-bg);
-  }
-}
-
-.caps__count {
-  @include t.mono-data;
-  color: var(--t-fg-faint);
-  margin-bottom: 1rem;
-}
-
 .caps__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -69,7 +27,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 10.5rem;
+  min-height: 11rem;
   padding: 1rem;
   background-color: var(--t-bg);
   transition: background-color $dur-fast $ease-productive;

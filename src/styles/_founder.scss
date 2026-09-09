@@ -1,0 +1,82 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Founder proof — credentials stated as record, not testimonial. No invented
+// quote; the facts carry the section.
+// ---------------------------------------------------------------------------
+.founder {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  border: 1px solid var(--t-border);
+  padding: 2rem 1.5rem;
+
+  @include bp.breakpoint(md) {
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+}
+
+// Monogram: a square plate, matching the shell mark's geometry.
+.founder__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: var(--t-fg);
+  color: var(--t-bg);
+  font-family: t.$font-mono;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.founder__name {
+  @include t.display-03;
+  color: var(--t-fg);
+}
+
+.founder__credentials {
+  margin-top: 1rem;
+  @include t.body-lg;
+  color: var(--t-fg-muted);
+  max-width: 48ch;
+}
+
+.founder__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  margin-top: 2rem;
+  background-color: var(--t-border);
+  border-top: 1px solid var(--t-border);
+
+  @media (min-width: 34rem) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.founder__stat {
+  background-color: var(--t-bg);
+  padding: 1.25rem 0 0;
+
+  @media (min-width: 34rem) {
+    padding: 1.25rem 1.25rem 0 0;
+  }
+}
+
+.founder__stat-value {
+  @include t.display-03;
+  color: var(--t-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.founder__stat-label {
+  margin-top: 0.5rem;
+  @include t.mono-data;
+  color: var(--t-fg-faint);
+}
