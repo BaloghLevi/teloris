@@ -4,10 +4,12 @@
 
 // ---------------------------------------------------------------------------
 // Teloris palette — deliberately narrow.
-// Pure black, pure white, the Carbon gray ramp, and one action blue. Nothing
-// else. Every surface in the site resolves to a value defined here.
+// White, the Carbon gray ramp, and one action blue. Nothing else. Every
+// surface in the site resolves to a value defined here.
+//
+// Dark sections sit on Carbon's official g100 theme rather than pure black:
+// background Gray 100, layer-01 Gray 90, layer-02 Gray 80.
 // ---------------------------------------------------------------------------
-$black: #000000;
 $white: #ffffff;
 
 $gray-10: colors.$gray-10; // #f4f4f4
@@ -56,9 +58,9 @@ $dur-base: 240ms;
 // same six semantic tokens, so a section can flip light/dark with one class.
 // ---------------------------------------------------------------------------
 @mixin zone-dark {
-  --t-bg: #{$black};
-  --t-surface: #{$gray-100};
-  --t-surface-2: #{$gray-90};
+  --t-bg: #{$gray-100};
+  --t-surface: #{$gray-90};
+  --t-surface-2: #{$gray-80};
   --t-fg: #{$white};
   --t-fg-muted: #{$gray-30};
   --t-fg-faint: #{$gray-50};
@@ -73,7 +75,7 @@ $dur-base: 240ms;
   --t-bg: #{$white};
   --t-surface: #{$gray-10};
   --t-surface-2: #{$gray-20};
-  --t-fg: #{$black};
+  --t-fg: #{$gray-100};
   --t-fg-muted: #{$gray-70};
   --t-fg-faint: #{$gray-60};
   --t-border: #{$gray-20};

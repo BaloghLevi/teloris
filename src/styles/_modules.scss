@@ -29,13 +29,13 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.25rem 1.75rem;
-  background-color: $black;
+  background-color: $gray-100;
   // The track: a 2px rule along the top edge of every module.
   box-shadow: inset 0 2px 0 $gray-70;
   transition: background-color $dur-fast $ease-productive;
 
   &:hover {
-    background-color: $gray-100;
+    background-color: $gray-90;
   }
 }
 

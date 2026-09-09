@@ -14,7 +14,7 @@
   display: flex;
   align-items: stretch;
   height: var(--t-shell-height);
-  background-color: $black;
+  background-color: $gray-100;
   border-bottom: 1px solid $gray-80;
 }
 
@@ -64,7 +64,7 @@
 
   &:hover {
     color: $white;
-    background-color: $gray-90;
+    background-color: $gray-80;
   }
 
   &[aria-current='page'] {
@@ -109,7 +109,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: $gray-90;
+    background-color: $gray-80;
   }
 
   @include bp.breakpoint(lg) {
@@ -121,7 +121,7 @@
   }
 
   &[aria-expanded='true'] {
-    background-color: $gray-90;
+    background-color: $gray-80;
 
     .shell__menu-open {
       display: none;
@@ -139,7 +139,7 @@
   inset-block-start: var(--t-shell-height);
   inset-inline: 0;
   z-index: 79;
-  background-color: $gray-100;
+  background-color: $gray-90;
   border-bottom: 1px solid $gray-80;
   transform: translateY(-100%);
   visibility: hidden;
@@ -165,7 +165,7 @@
   font-size: 1rem;
 
   &:hover {
-    background-color: $gray-90;
+    background-color: $gray-80;
     color: $white;
   }
 

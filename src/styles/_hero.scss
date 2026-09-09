@@ -120,12 +120,12 @@
 }
 
 .verb {
-  background-color: $black;
+  background-color: $gray-100;
   padding: 1.25rem 1rem 1.5rem;
   transition: background-color $dur-fast $ease-productive;
 
   &:hover {
-    background-color: $gray-100;
+    background-color: $gray-90;
   }
 }
 
