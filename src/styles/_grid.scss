@@ -1,0 +1,90 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+
+// ---------------------------------------------------------------------------
+// The 2x Grid — 16 columns, 32px gutter, 16/32px page margin, capped at 99rem.
+// Authored directly on CSS Grid rather than pulling @carbon/grid's full class
+// matrix, so only the columns this site actually uses are shipped.
+// ---------------------------------------------------------------------------
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--t-gutter);
+  row-gap: 0;
+  width: 100%;
+  max-width: 99rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @include bp.breakpoint(md) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    padding-inline: 2rem;
+  }
+
+  @include bp.breakpoint(lg) {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+  }
+}
+
+// Full-bleed grid: keeps the columns, drops the page margin, so hairlines and
+// panels can run edge to edge.
+.grid--bleed {
+  padding-inline: 0;
+  max-width: none;
+
+  @include bp.breakpoint(md) {
+    padding-inline: 0;
+  }
+}
+
+// Every column is full width until its breakpoint claims it.
+[class*='col-'] {
+  grid-column: 1 / -1;
+}
+
+// Span helpers. Small screens are single-column by default; `md` and `lg`
+// spans are opt-in per element via these classes.
+@for $i from 1 through 4 {
+  .col-sm-#{$i} {
+    grid-column: span #{$i} / span #{$i};
+  }
+}
+
+@include bp.breakpoint(md) {
+  @for $i from 1 through 8 {
+    .col-md-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 8 {
+    .start-md-#{$i} {
+      grid-column-start: #{$i};
+    }
+  }
+}
+
+@include bp.breakpoint(lg) {
+  @for $i from 1 through 16 {
+    .col-lg-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 16 {
+    .start-lg-#{$i} {
+      grid-column-start: #{$i};
+    }
+  }
+}
+
+.section {
+  padding-block: var(--t-section-y);
+}
+
+.section--lg {
+  padding-block: var(--t-section-y-lg);
+}
+
+// A hairline that sits on the grid rather than floating in the padding box.
+.rule {
+  border-top: var(--t-rule) solid var(--t-border);
+}

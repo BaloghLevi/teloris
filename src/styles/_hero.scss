@@ -1,0 +1,139 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Hero — asymmetrical and editorial. The headline holds columns 1–10 and the
+// supporting block sits in 12–16, dropped below the headline's first line so
+// the two never read as a centered stack.
+// ---------------------------------------------------------------------------
+.hero {
+  position: relative;
+  padding-block: 4rem 0;
+  overflow: hidden;
+
+  @include bp.breakpoint(lg) {
+    padding-block: 7rem 0;
+  }
+}
+
+// Faint column guides, drawn on the same 16-column geometry as the content.
+// They make the grid visible without becoming decoration.
+.hero__guides {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+
+  @include bp.breakpoint(lg) {
+    display: grid;
+  }
+
+  span {
+    border-left: 1px solid $gray-90;
+    grid-row: 1;
+  }
+}
+
+.hero__eyebrow {
+  @include t.eyebrow;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid $gray-80;
+  color: $blue-50;
+}
+
+.hero__eyebrow-meta {
+  color: $gray-50;
+}
+
+.hero__title {
+  @include t.display-01;
+  text-wrap: balance;
+
+  // The second sentence steps back to gray so the headline carries a stress
+  // pattern instead of one uniform block of white.
+  em {
+    font-style: normal;
+    color: $gray-50;
+  }
+}
+
+.hero__aside {
+  margin-top: 2.5rem;
+
+  @include bp.breakpoint(lg) {
+    // Editorial offset: the aside starts well below the headline's cap line.
+    margin-top: 1.25rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid $gray-80;
+  }
+}
+
+.hero__lede {
+  @include t.body-lg;
+  color: $gray-30;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin-top: 2rem;
+}
+
+// Signal rail — three claims stated as data, closing the hero on a hairline.
+.hero__rail {
+  margin-top: 4rem;
+  border-top: 1px solid $gray-80;
+
+  @include bp.breakpoint(lg) {
+    margin-top: 6rem;
+  }
+}
+
+.hero__stat {
+  padding-block: 2rem;
+  border-bottom: 1px solid $gray-80;
+
+  @include bp.breakpoint(md) {
+    border-bottom: 0;
+    padding-right: 2rem;
+  }
+
+  @include bp.breakpoint(lg) {
+    // Hairlines between the stats, not around them.
+    border-left: 1px solid $gray-80;
+    padding-left: 1.5rem;
+    padding-right: 3rem;
+
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+.hero__stat-value {
+  @include t.display-03;
+  color: $white;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__stat-label {
+  @include t.eyebrow;
+  color: $blue-50;
+  margin-bottom: 0.75rem;
+}
+
+.hero__stat-note {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  color: $gray-50;
+  max-width: 30ch;
+}

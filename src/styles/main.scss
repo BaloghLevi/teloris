@@ -1,0 +1,12 @@
+// Teloris — Carbon Design System foundation.
+// Order matters: tokens and type define the variables every later partial uses.
+@use 'tokens';
+@use 'type';
+@use 'base';
+@use 'grid';
+@use 'components';
+@use 'shell';
+@use 'hero';
+@use 'evidence';
+@use 'capabilities';
+@use 'stages';

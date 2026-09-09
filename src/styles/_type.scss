@@ -1,0 +1,101 @@
+@use '@carbon/styles/scss/type' as type;
+@use 'tokens' as *;
+
+// IBM Plex, self-hosted. Sans ships as a variable roman covering 100–700, so
+// the whole display and body scale comes from one file.
+@font-face {
+  font-family: 'IBM Plex Sans Var';
+  src: url('/fonts/IBMPlexSansVar-Roman.woff2') format('woff2-variations');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-sans: 'IBM Plex Sans Var', 'IBM Plex Sans', -apple-system,
+  BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+$font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+  monospace;
+
+// ---------------------------------------------------------------------------
+// Display scale. Carbon's fluid headings step at breakpoints; these clamp
+// between the same anchor sizes so the type scales continuously instead of
+// jumping. Weight 300 (Light) is the Carbon expressive display weight.
+// ---------------------------------------------------------------------------
+@mixin display-01 {
+  font-size: clamp(2.5rem, 1.35rem + 5.1vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@mixin display-02 {
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 4rem);
+  font-weight: 300;
+  line-height: 1.09;
+  letter-spacing: -0.025em;
+}
+
+@mixin display-03 {
+  font-size: clamp(1.75rem, 1.3rem + 1.9vw, 3rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@mixin heading-04 {
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+@mixin body-lg {
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+@mixin body {
+  @include type.type-style('body-02');
+}
+
+@mixin body-sm {
+  @include type.type-style('body-01');
+}
+
+// Mono eyebrow: the site's structural voice — section indices, data labels,
+// evidence keys. Uppercase, tracked out, always small.
+@mixin eyebrow {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.33333;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@mixin mono-data {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}

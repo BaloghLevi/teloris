@@ -1,0 +1,21 @@
+{
+  "name": "teloris-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Teloris.ai marketing site — Carbon Design System",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.104.0",
+    "vite": "^7.3.6"
+  },
+  "dependencies": {
+    "@carbon/grid": "^11.62.0",
+    "@carbon/styles": "^1.115.0",
+    "@ibm/plex": "^6.4.1"
+  }
+}

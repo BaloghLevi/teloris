@@ -1,0 +1,109 @@
+@use '@carbon/styles/scss/colors';
+@use '@carbon/styles/scss/spacing' as spacing;
+@use '@carbon/styles/scss/motion' as motion;
+
+// ---------------------------------------------------------------------------
+// Teloris palette — deliberately narrow.
+// Pure black, pure white, the Carbon gray ramp, and one action blue. Nothing
+// else. Every surface in the site resolves to a value defined here.
+// ---------------------------------------------------------------------------
+$black: #000000;
+$white: #ffffff;
+
+$gray-10: colors.$gray-10; // #f4f4f4
+$gray-20: colors.$gray-20; // #e0e0e0
+$gray-30: colors.$gray-30; // #c6c6c6
+$gray-50: colors.$gray-50; // #8d8d8d
+$gray-60: colors.$gray-60; // #6f6f6f
+$gray-70: colors.$gray-70; // #525252
+$gray-80: colors.$gray-80; // #393939
+$gray-90: colors.$gray-90; // #262626
+$gray-100: colors.$gray-100; // #161616
+
+$blue-60: colors.$blue-60; // #0f62fe — action blue, on light
+$blue-70: colors.$blue-70; // #0043ce — hover, on light
+$blue-50: colors.$blue-50; // #4589ff — action blue, on black (AA text contrast)
+$blue-40: colors.$blue-40; // #78a9ff — hover, on black
+
+// Carbon motion, verbatim.
+$ease-productive: motion.motion(standard, productive);
+$ease-entrance: motion.motion(entrance, expressive);
+$dur-fast: 110ms;
+$dur-base: 240ms;
+
+:root {
+  // 2x Grid geometry
+  --t-gutter: #{spacing.$spacing-05}; // 16px → 32px column gutter (2 x 16)
+  --t-shell-height: 3rem; // Carbon UI Shell header: 48px
+  --t-rule: 1px;
+
+  // Section rhythm, on the 8px spacing scale
+  --t-section-y: #{spacing.$spacing-09}; // 48px
+  --t-section-y-lg: #{spacing.$spacing-12}; // 96px
+
+  color-scheme: dark;
+}
+
+@media (min-width: 42rem) {
+  :root {
+    --t-section-y: #{spacing.$spacing-11}; // 80px
+    --t-section-y-lg: #{spacing.$spacing-13}; // 160px
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Zones. Each section declares its own surface; everything inside reads the
+// same six semantic tokens, so a section can flip light/dark with one class.
+// ---------------------------------------------------------------------------
+@mixin zone-dark {
+  --t-bg: #{$black};
+  --t-surface: #{$gray-100};
+  --t-surface-2: #{$gray-90};
+  --t-fg: #{$white};
+  --t-fg-muted: #{$gray-30};
+  --t-fg-faint: #{$gray-50};
+  --t-border: #{$gray-80};
+  --t-border-strong: #{$gray-60};
+  --t-accent: #{$blue-50};
+  --t-accent-hover: #{$blue-40};
+  --t-focus: #{$white};
+}
+
+@mixin zone-light {
+  --t-bg: #{$white};
+  --t-surface: #{$gray-10};
+  --t-surface-2: #{$gray-20};
+  --t-fg: #{$black};
+  --t-fg-muted: #{$gray-70};
+  --t-fg-faint: #{$gray-60};
+  --t-border: #{$gray-20};
+  --t-border-strong: #{$gray-50};
+  --t-accent: #{$blue-60};
+  --t-accent-hover: #{$blue-70};
+  --t-focus: #{$blue-60};
+}
+
+@mixin zone-subtle {
+  @include zone-light;
+  --t-bg: #{$gray-10};
+  --t-surface: #{$white};
+  --t-surface-2: #{$gray-20};
+  --t-border: #{$gray-20};
+}
+
+.zone--dark {
+  @include zone-dark;
+}
+.zone--light {
+  @include zone-light;
+}
+.zone--subtle {
+  @include zone-subtle;
+}
+
+.zone--dark,
+.zone--light,
+.zone--subtle {
+  background-color: var(--t-bg);
+  color: var(--t-fg);
+}

@@ -1,0 +1,122 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// Button — Carbon proportions: 48px tall, square, asymmetric padding with the
+// label left and the icon parked in the right 16px.
+// ---------------------------------------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 3rem;
+  min-width: 12.5rem;
+  padding: 0.875rem 1rem 0.875rem 1rem;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.28572;
+  letter-spacing: 0.16px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color $dur-fast $ease-productive,
+    border-color $dur-fast $ease-productive, color $dur-fast $ease-productive;
+
+  .btn__icon {
+    flex: 0 0 auto;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.0625rem;
+    transition: transform $dur-base $ease-productive;
+  }
+
+  &:hover .btn__icon {
+    transform: translateX(0.25rem);
+  }
+}
+
+.btn--primary {
+  background-color: $blue-60;
+  color: $white;
+
+  &:hover {
+    background-color: $blue-70;
+  }
+}
+
+// Tertiary: outlined, inverts to solid on hover. Reads correctly in both zones
+// because it is built from the zone tokens.
+.btn--tertiary {
+  background-color: transparent;
+  border-color: var(--t-fg);
+  color: var(--t-fg);
+
+  &:hover {
+    background-color: var(--t-fg);
+    color: var(--t-bg);
+  }
+}
+
+.btn--ghost {
+  min-width: 0;
+  padding-inline: 0;
+  gap: 0.75rem;
+  background: transparent;
+  color: var(--t-accent);
+
+  &:hover {
+    color: var(--t-accent-hover);
+    text-decoration: underline;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Eyebrow — the mono section marker. The rule and index give every section a
+// fixed address on the page.
+// ---------------------------------------------------------------------------
+.eyebrow {
+  @include t.eyebrow;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: var(--t-accent);
+}
+
+.eyebrow__index {
+  color: var(--t-fg-faint);
+}
+
+.section-head {
+  margin-bottom: 2.5rem;
+
+  @include bp.breakpoint(lg) {
+    margin-bottom: 4rem;
+  }
+}
+
+.section-head__title {
+  @include t.display-03;
+  margin-top: 1.5rem;
+  text-wrap: balance;
+}
+
+.section-head__lede {
+  @include t.body-lg;
+  margin-top: 1.5rem;
+  color: var(--t-fg-muted);
+  max-width: 46ch;
+}
+
+// Link with a Carbon-style animated underline.
+.link {
+  color: var(--t-accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+
+  &:hover {
+    color: var(--t-accent-hover);
+  }
+}

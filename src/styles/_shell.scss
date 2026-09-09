@@ -1,0 +1,232 @@
+@use '@carbon/styles/scss/breakpoint' as bp;
+@use 'tokens' as *;
+@use 'type' as t;
+
+// ---------------------------------------------------------------------------
+// UI Shell header — Carbon's fixed 48px black bar. Always #000, regardless of
+// the zone scrolling beneath it, so the page has one constant edge.
+// ---------------------------------------------------------------------------
+.shell {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 80;
+  display: flex;
+  align-items: stretch;
+  height: var(--t-shell-height);
+  background-color: $black;
+  border-bottom: 1px solid $gray-80;
+}
+
+.shell__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding-inline: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $white;
+  flex: 0 0 auto;
+
+  @include bp.breakpoint(md) {
+    padding-inline: 1.5rem 2rem;
+  }
+}
+
+// The mark: a 3x3 module set, one cell filled blue — the "operating system"
+// idea reduced to a grid glyph.
+.shell__mark {
+  flex: 0 0 auto;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.shell__nav {
+  display: none;
+
+  @include bp.breakpoint(lg) {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.shell__link {
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.28572;
+  color: $gray-30;
+  border-block: 2px solid transparent;
+  transition: color $dur-fast $ease-productive,
+    background-color $dur-fast $ease-productive;
+
+  &:hover {
+    color: $white;
+    background-color: $gray-90;
+  }
+
+  &[aria-current='page'] {
+    color: $white;
+    border-bottom-color: $blue-50;
+  }
+}
+
+.shell__spacer {
+  flex: 1 1 auto;
+}
+
+.shell__cta {
+  display: none;
+
+  @include bp.breakpoint(md) {
+    display: flex;
+    align-items: center;
+    padding-inline: 1.5rem;
+    background-color: $blue-60;
+    color: $white;
+    font-size: 0.875rem;
+    transition: background-color $dur-fast $ease-productive;
+
+    &:hover {
+      background-color: $blue-70;
+    }
+  }
+}
+
+// Menu button — visible below `lg`, where the inline nav is withdrawn.
+.shell__menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-90;
+  }
+
+  @include bp.breakpoint(lg) {
+    display: none;
+  }
+
+  .shell__menu-close {
+    display: none;
+  }
+
+  &[aria-expanded='true'] {
+    background-color: $gray-90;
+
+    .shell__menu-open {
+      display: none;
+    }
+    .shell__menu-close {
+      display: block;
+    }
+  }
+}
+
+// Mobile panel — a Carbon side-nav rendered as a full-width sheet under the
+// shell, so it never competes with the fixed header.
+.shell__panel {
+  position: fixed;
+  inset-block-start: var(--t-shell-height);
+  inset-inline: 0;
+  z-index: 79;
+  background-color: $gray-100;
+  border-bottom: 1px solid $gray-80;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform $dur-base $ease-productive,
+    visibility 0s linear $dur-base;
+
+  &[data-open='true'] {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform $dur-base $ease-entrance, visibility 0s;
+  }
+
+  @include bp.breakpoint(lg) {
+    display: none;
+  }
+}
+
+.shell__panel-link {
+  display: block;
+  padding: 1rem;
+  color: $gray-30;
+  border-bottom: 1px solid $gray-80;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: $gray-90;
+    color: $white;
+  }
+
+  &[aria-current='page'] {
+    color: $white;
+    box-shadow: inset 3px 0 0 $blue-50;
+  }
+}
+
+// Page content clears the fixed shell.
+.page {
+  padding-top: var(--t-shell-height);
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+.footer {
+  border-top: 1px solid $gray-80;
+  padding-block: 4rem 2rem;
+}
+
+.footer__brand {
+  @include t.display-03;
+  color: $white;
+}
+
+.footer__tagline {
+  margin-top: 1rem;
+  color: $gray-30;
+  max-width: 34ch;
+}
+
+.footer__group-title {
+  @include t.eyebrow;
+  color: $gray-50;
+  margin-bottom: 1.25rem;
+}
+
+.footer__list li + li {
+  margin-top: 0.75rem;
+}
+
+.footer__list a {
+  color: $gray-30;
+  font-size: 0.875rem;
+
+  &:hover {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+.footer__bottom {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $gray-80;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  @include t.mono-data;
+  color: $gray-50;
+}
